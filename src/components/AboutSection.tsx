@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { Code2, Sparkles, GraduationCap, Briefcase, MapPin } from "lucide-react";
+import { Code2, Sparkles, GraduationCap, Briefcase, MapPin, Download } from "lucide-react";
 
 const AboutSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -188,16 +188,28 @@ const AboutSection: React.FC = () => {
               ))}
             </div>
 
-            {/* Signature */}
+            {/* Signature and CV Button */}
             <div
               className={`pt-6 border-t border-white/10 transition-all duration-1000 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}
               style={{ transitionDelay: "800ms" }}
             >
-              <p className="text-sm uppercase tracking-[0.3em] text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 font-bold">
-                Abdelhamid Ramdani
-              </p>
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <p className="text-sm uppercase tracking-[0.3em] text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 font-bold">
+                  Abdelhamid Ramdani
+                </p>
+                
+                <a
+                  href="/cv.pdf"
+                  download
+                  className="group/btn relative inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 backdrop-blur-md border border-cyan-500/30 rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/20"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
+                  <Download className="w-4 h-4 text-cyan-400 relative z-10 transition-transform group-hover/btn:translate-y-0.5" />
+                  <span className="text-sm font-semibold text-white relative z-10">Download CV</span>
+                </a>
+              </div>
             </div>
           </div>
 

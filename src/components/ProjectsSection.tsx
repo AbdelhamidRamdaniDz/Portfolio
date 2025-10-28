@@ -41,10 +41,10 @@ const ProjectsSection: React.FC = () => (
     className="relative py-20 px-4 md:px-12 bg-black text-gray-200 mx-auto max-w-7xl"
     aria-labelledby="projects-heading"
   >
-    <div className="relative z-50 grid grid-cols-2">
-      <div className="absolute left-0 right-0 bottom-0 top-1/2 z-10 bg-gradient-to-t from-black to-transparent " />
+    <div className="relative z-50 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-0">
+      <div className="absolute left-0 right-0 bottom-0 top-1/2 z-10 bg-gradient-to-t from-black to-transparent lg:block hidden" />
 
-      <div className="z-20 flex flex-col justify-center items-start  ">
+      <div className="z-20 flex flex-col justify-center items-start">
         <h2
           id="projects-heading"
           className="text-3xl md:text-5xl font-bold mb-6 text-purple-400"
@@ -58,7 +58,7 @@ const ProjectsSection: React.FC = () => (
           A curated selection of my most impactful work
         </p>
         <div
-          className="text-center mt-14 animate-in"
+          className="text-center lg:text-left mt-14 animate-in w-full lg:w-auto"
           style={{ transitionDelay: "0.5s" }}
         >
           <Link
@@ -80,7 +80,7 @@ const ProjectsSection: React.FC = () => (
           </Link>
         </div>
       </div>
-      <div className=" overflow-hidden relative min-h-[400px]">
+      <div className="overflow-hidden relative min-h-[400px] flex justify-center lg:justify-start">
         <CardSwap
           width={CARD_WIDTH}
           height={CARD_HEIGHT}

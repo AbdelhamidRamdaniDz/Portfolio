@@ -88,7 +88,7 @@ const HeroSection: React.FC = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black pt-8"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black pt-24 md:pt-32 px-4"
       role="banner"
     >
       {/* Animated Matrix Background */}
@@ -107,9 +107,9 @@ const HeroSection: React.FC = () => {
         }}
         aria-hidden="true"
       >
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-cyan-500 filter blur-[120px] opacity-20 animate-pulse-slow" />
-        <div className="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] rounded-full bg-purple-600 filter blur-[140px] opacity-15 animate-pulse-slower" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-cyan-400 filter blur-[100px] opacity-10" />
+        <div className="absolute top-1/4 left-1/4 w-64 md:w-96 h-64 md:h-96 rounded-full bg-cyan-500 filter blur-[120px] opacity-20 animate-pulse-slow" />
+        <div className="absolute bottom-1/3 right-1/4 w-80 md:w-[500px] h-80 md:h-[500px] rounded-full bg-purple-600 filter blur-[140px] opacity-15 animate-pulse-slower" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 md:w-64 h-48 md:h-64 rounded-full bg-cyan-400 filter blur-[100px] opacity-10" />
       </div>
 
       {/* Grid Pattern Overlay */}
@@ -131,22 +131,22 @@ const HeroSection: React.FC = () => {
       </div>
 
       {/* Glassmorphic Content Container */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12 text-center">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 md:px-12 text-center">
         {/* AI Badge */}
         <div
-          className={`inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-white/5 backdrop-blur-md border border-cyan-500/20 transition-all duration-1000 ${
+          className={`inline-flex items-center gap-2 px-3 sm:px-4 py-2 mb-6 sm:mb-8 rounded-full bg-white/5 backdrop-blur-md border border-cyan-500/20 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
           style={{ transitionDelay: "100ms" }}
         >
-          <Sparkles className="w-4 h-4 text-cyan-400 animate-pulse" />
-          <span className="text-sm font-medium text-cyan-400 tracking-wider">
+          <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-cyan-400 animate-pulse" />
+          <span className="text-xs sm:text-sm font-medium text-cyan-400 tracking-wider">
             AI-POWERED DEVELOPMENT
           </span>
         </div>
 
         {/* Main Heading with Staggered Animation */}
-        <h1 className="relative mb-6">
+        <h1 className="relative mb-4 sm:mb-6">
           <span className="sr-only">Abdelhamid Ramdani - Full-Stack Developer and CTO</span>
           
           {/* First Name */}
@@ -158,7 +158,7 @@ const HeroSection: React.FC = () => {
             aria-hidden="true"
           >
             <span
-              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight"
+              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tight"
               style={{
                 background: "linear-gradient(135deg, #e5e7eb 0%, #06b6d4 50%, #a855f7 100%)",
                 backgroundSize: "200% auto",
@@ -181,7 +181,7 @@ const HeroSection: React.FC = () => {
             aria-hidden="true"
           >
             <span
-              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight"
+              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tight"
               style={{
                 background: "linear-gradient(135deg, #06b6d4 0%, #a855f7 50%, #e5e7eb 100%)",
                 backgroundSize: "200% auto",
@@ -204,7 +204,7 @@ const HeroSection: React.FC = () => {
 
         {/* Role Title */}
         <h2
-          className={`text-2xl md:text-3xl lg:text-4xl font-bold mb-8 transition-all duration-1000 ${
+          className={`text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 sm:mb-8 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
           style={{ transitionDelay: "600ms" }}
@@ -212,13 +212,13 @@ const HeroSection: React.FC = () => {
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-cyan-300 to-purple-400">
             Full-Stack Developer & CTO
           </span>
-          <span className="text-gray-400 mx-3">@</span>
+          <span className="text-gray-400 mx-2 sm:mx-3">@</span>
           <span className="text-gray-200">FreeFlow</span>
         </h2>
 
         {/* Description */}
         <p
-          className={`text-lg md:text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed transition-all duration-1000 ${
+          className={`text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto mb-8 sm:mb-12 leading-relaxed px-4 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
           style={{ transitionDelay: "800ms" }}
@@ -232,7 +232,7 @@ const HeroSection: React.FC = () => {
 
         {/* CTA Buttons */}
         <div
-          className={`flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-1000 ${
+          className={`flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
           style={{ transitionDelay: "1000ms" }}
@@ -240,11 +240,11 @@ const HeroSection: React.FC = () => {
           {/* Primary CTA */}
           <Link
             href="/projects"
-            className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-cyan-600 text-black font-bold text-lg rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/50 hover:scale-105 active:scale-95"
+            className="group relative w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cyan-500 to-cyan-600 text-black font-bold text-base sm:text-lg rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/50 hover:scale-105 active:scale-95"
           >
-            <span className="relative z-10 flex items-center gap-2">
+            <span className="relative z-10 flex items-center justify-center gap-2">
               View My Work
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </Link>
@@ -252,11 +252,11 @@ const HeroSection: React.FC = () => {
           {/* Secondary CTA */}
           <Link
             href="/#contact"
-            className="group relative px-8 py-4 bg-white/5 backdrop-blur-md text-cyan-400 font-bold text-lg rounded-lg border-2 border-cyan-500/30 overflow-hidden transition-all duration-300 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/30 hover:scale-105 active:scale-95"
+            className="group relative w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white/5 backdrop-blur-md text-cyan-400 font-bold text-base sm:text-lg rounded-lg border-2 border-cyan-500/30 overflow-hidden transition-all duration-300 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/30 hover:scale-105 active:scale-95"
           >
-            <span className="relative z-10 flex items-center gap-2">
+            <span className="relative z-10 flex items-center justify-center gap-2">
               Let&apos;s Connect
-              <Sparkles className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
+              <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-12 transition-transform duration-300" />
             </span>
             <div className="absolute inset-0 bg-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </Link>
@@ -264,7 +264,7 @@ const HeroSection: React.FC = () => {
 
         {/* Tech Stack Pills */}
         <div
-          className={`mt-16 flex flex-wrap items-center justify-center gap-3 transition-all duration-1000 ${
+          className={`mt-12 sm:mt-16 flex flex-wrap items-center justify-center gap-2 sm:gap-3 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
           style={{ transitionDelay: "1200ms" }}
@@ -272,7 +272,7 @@ const HeroSection: React.FC = () => {
           {["Next.js", "React", "Node.js", "TypeScript", "AI/ML", "Cloud"].map((tech, index) => (
             <span
               key={tech}
-              className="px-4 py-2 text-sm font-mono text-gray-400 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full hover:border-cyan-500/40 hover:text-cyan-400 transition-all duration-300 cursor-default"
+              className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-mono text-gray-400 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full hover:border-cyan-500/40 hover:text-cyan-400 transition-all duration-300 cursor-default"
               style={{ animationDelay: `${1200 + index * 100}ms` }}
             >
               {tech}
@@ -283,15 +283,15 @@ const HeroSection: React.FC = () => {
 
       {/* Scroll Indicator */}
       <div
-        className={`absolute bottom-8 left-1/2 -translate-x-1/2 transition-all duration-1000 ${
+        className={`absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 transition-all duration-1000 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
         }`}
         style={{ transitionDelay: "1400ms" }}
         aria-hidden="true"
       >
         <div className="flex flex-col items-center gap-2 animate-bounce-slow">
-          <div className="w-px h-12 bg-gradient-to-b from-transparent via-cyan-500 to-transparent" />
-          <div className="w-2 h-2 rounded-full bg-cyan-400 shadow-lg shadow-cyan-400/50" />
+          <div className="w-px h-8 sm:h-12 bg-gradient-to-b from-transparent via-cyan-500 to-transparent" />
+          <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-cyan-400 shadow-lg shadow-cyan-400/50" />
         </div>
       </div>
 
