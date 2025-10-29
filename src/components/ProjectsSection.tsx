@@ -30,6 +30,24 @@ const projects = [
     gradient: "from-purple-400 to-purple-900",
     delay: "0.4s",
   },
+  {
+    title: "URGO",
+    tech: "Next JS • TailwindCSS • TypeScript • Mongodb • Express.js • JWT • Node.js • React Native • Expo ",
+    description: "Developed a comprehensive, Cross-Platform EHS system (Web/Mobile) to automate emergency response. The solution links paramedics (via **React Native mobile app**) with hospitals (via **Next.js web platform**) providing **real-time data** on bed availability. Features include interactive maps, immediate patient data transmission, and a centralized dashboard for **Advanced Analytics** to reduce response time and ensure optimal patient care.",
+    href: "https://hospital-front-opal.vercel.app/",
+    bg: "URGO.webp",
+    gradient: "from-purple-400 to-purple-900",
+    delay: "0.5s",
+  },
+  {
+    title: "public Service Inspectorate",
+    tech: "Next JS • TailwindCSS • TypeScript ",
+    description: "Developed a Unified E-Service Platform (Web) for a governmental body to automate and streamline university diploma equivalence requests. The solution digitalized the public service process, providing real-time submission and tracking for over **12,450 requests** and reducing the average processing time to **15 days**. Features include secure forms and performance **metrics/dashboards** for administrators.",
+    href: "https://public-service-inspectorate.vercel.app/",
+    bg: "public-service-inspectorate.webp",
+    gradient: "from-purple-400 to-purple-900",
+    delay: "0.6s",
+  },
 ];
 
 const CARD_WIDTH = 380;
