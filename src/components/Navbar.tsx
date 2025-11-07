@@ -27,6 +27,7 @@ const Navbar: React.FC = () => {
 
 
   const navLinks = [
+    { href: "/skills", label: "Skills" },
     { href: "#about", label: "About" },
     { href: "#projects", label: "Projects" },
     { href: "#services", label: "Services" },
@@ -35,7 +36,6 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      {/* Main Navbar */}
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-500 ease-out ${
           isScrolled
@@ -47,7 +47,6 @@ const Navbar: React.FC = () => {
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="flex justify-between items-center">
-            {/* Logo / Brand */}
             <Link
               href="/"
               className="relative group"
@@ -69,7 +68,6 @@ const Navbar: React.FC = () => {
                 >
                   #Abdelhamid
                 </span>
-                {/* Glow effect */}
                 <div
                   className="absolute inset-0 blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"
                   style={{
@@ -79,7 +77,6 @@ const Navbar: React.FC = () => {
               </div>
             </Link>
 
-            {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-1 lg:space-x-2">
               {navLinks.map((link) => (
                 <Link
@@ -87,18 +84,11 @@ const Navbar: React.FC = () => {
                   href={link.href}
                   className="relative px-4 py-2 text-sm font-medium tracking-wide uppercase text-gray-300 group overflow-hidden"
                 >
-                  {/* Text */}
                   <span className="relative z-10 group-hover:text-cyan-400 transition-colors duration-300">
                     {link.label}
                   </span>
-                  
-                  {/* Hover background */}
                   <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/0 via-cyan-500/10 to-purple-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  {/* Animated underline */}
                   <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-cyan-400 to-purple-500 group-hover:w-full transition-all duration-300 ease-out" />
-                  
-                  {/* Glow effect */}
                   <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md bg-cyan-400/20" />
                 </Link>
               ))}
@@ -106,7 +96,6 @@ const Navbar: React.FC = () => {
 
             </div>
 
-            {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="md:hidden p-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/30 transition-all duration-300 relative group"
@@ -125,7 +114,6 @@ const Navbar: React.FC = () => {
           </div>
         </div>
 
-        {/* Scroll Progress Bar */}
         <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-white/5 to-transparent">
           <div
             className="h-full bg-gradient-to-r from-cyan-400 via-purple-500 to-cyan-400 transition-all duration-100 ease-out relative"
@@ -136,7 +124,6 @@ const Navbar: React.FC = () => {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
       <div
         className={`fixed inset-0 z-40 md:hidden transition-all duration-500 ${
           isMobileMenuOpen
@@ -144,13 +131,10 @@ const Navbar: React.FC = () => {
             : "opacity-0 pointer-events-none"
         }`}
       >
-        {/* Backdrop */}
         <div
           className="absolute inset-0 bg-black/80 backdrop-blur-xl"
           onClick={() => setIsMobileMenuOpen(false)}
         />
-
-        {/* Menu Content */}
         <div
           className={`absolute top-20 right-6 left-6 bg-gradient-to-br from-black/90 to-black/70 backdrop-blur-2xl rounded-2xl border border-cyan-500/20 shadow-2xl shadow-cyan-500/10 overflow-hidden transition-all duration-500 ${
             isMobileMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0"
@@ -176,7 +160,6 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* CSS Animations */}
       <style jsx>{`
         @keyframes shimmer {
           0% {
