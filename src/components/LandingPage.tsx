@@ -2,11 +2,13 @@
 import React, { useEffect } from "react";
 import HeroSection from "./HeroSection";
 import AboutSection from "./AboutSection";
+import SkillsSection from "./SkillsSection";
 import ProjectsSection from "./ProjectsSection";
 import ServicesSection from "./ServicesSection";
 import PhilosophySection from "./PhilosophySection";
 import ContactSection from "./ContactSection";
 import Footer from "./Footer";
+
 const LandingPage: React.FC = () => {
   useEffect(() => {
     const animateElements = document.querySelectorAll(".animate-in");
@@ -20,25 +22,21 @@ const LandingPage: React.FC = () => {
       },
       { threshold: 0.1 }
     );
-    animateElements.forEach((element) => {
-      observer.observe(element);
-    });
-    return () => {
-      animateElements.forEach((element) => {
-        observer.unobserve(element);
-      });
-    };
+    animateElements.forEach((el) => observer.observe(el));
+    return () => animateElements.forEach((el) => observer.unobserve(el));
   }, []);
+
   return (
-    <main className="relative z-10 bg-black text-text font-inter scroll-smooth antialiased">
+    <div style={{ fontFamily: "var(--font-sans)" }}>
       <HeroSection />
       <AboutSection />
+      <SkillsSection />
       <ProjectsSection />
       <ServicesSection />
       <PhilosophySection />
-      <ContactSection /> 
+      <ContactSection />
       <Footer />
-    </main>
+    </div>
   );
 };
 

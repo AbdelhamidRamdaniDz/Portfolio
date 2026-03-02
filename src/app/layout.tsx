@@ -1,35 +1,41 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "Personal Portfolio",
-  description: "A showcase of my projects and skills",
+  title: {
+    default: "Abdelhamid Ramdani — Technical Product Architect & CTO",
+    template: "%s | Abdelhamid Ramdani",
+  },
+  description:
+    "Technical Product Architect and CTO at FreeFlow. I design and engineer scalable, production-grade systems — from system architecture to deployment.",
+  keywords: [
+    "Technical Product Architect",
+    "CTO",
+    "Full-Stack Developer",
+    "Next.js",
+    "TypeScript",
+    "AI Engineer",
+    "Algeria",
+  ],
+  authors: [{ name: "Abdelhamid Ramdani" }],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    title: "Abdelhamid Ramdani — Technical Product Architect & CTO",
+    description: "I architect systems that scale businesses.",
+    siteName: "Abdelhamid Ramdani",
+  },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="antialiased">
         <Navbar />
-        {children}     
+        {children}
       </body>
     </html>
   );
