@@ -58,7 +58,7 @@ const SKILLS: Skill[] = [
   { id: "jwt", name: "JWT", category: "Tools", proficiency: 74, projects: 10 },
 ];
 
-type RadarDatum = { label: Category; value: number; icon: any };
+type RadarDatum = { label: Category; value: number; icon: React.ComponentType<{ className?: string }> };
 
 const RADAR_DATA: RadarDatum[] = [
   { label: "Frontend", value: 92, icon: Code },
@@ -526,7 +526,7 @@ function SkillList() {
   );
 }
 
-function StatCard({ icon: Icon, label, value, delay }: { icon: any; label: string; value: string; delay: number }) {
+function StatCard({ icon: Icon, label, value, delay }: { icon: React.ComponentType<{ className?: string }>; label: string; value: string; delay: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}

@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, Clock, ExternalLink } from "lucide-react";
+import { ArrowLeft, Clock } from "lucide-react";
 import { getPostBySlug } from "@/lib/blog";
 import { notFound } from "next/navigation";
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 function SectionBlock({ label, children }: { label: string; children: React.ReactNode }) {
@@ -102,7 +102,8 @@ function KeyInsights({ insights }: { insights: string[] }) {
 }
 
 export default function BlogPostPage({ params }: Props) {
-  const post = getPostBySlug(params.slug);
+  const { slug } = use(params);
+  const post = getPostBySlug(slug);
   if (!post) notFound();
 
   const formattedDate = new Date(post.publishedAt).toLocaleDateString("en-US", {

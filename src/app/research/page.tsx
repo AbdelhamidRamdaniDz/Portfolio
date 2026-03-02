@@ -218,7 +218,7 @@ function CategorySection({ cat }: { cat: ResearchCategory }) {
 export default function ResearchPage() {
   const [activeFilter, setActiveFilter] = useState<string>("All");
 
-  const filteredCategories = categories;
+
   const filteredEntries = activeFilter === "All"
     ? researchEntries
     : researchEntries.filter((e) => e.domain === activeFilter);
