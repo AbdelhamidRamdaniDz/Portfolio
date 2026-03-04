@@ -67,8 +67,8 @@ const ContactSection: React.FC = () => (
           >
             {[
               { v: "< 24h", l: "Response time" },
-              { v: "2–3",   l: "Projects / quarter" },
-              { v: "100%",  l: "Remote capable" },
+              { v: "2–3 mo",  l: "Typical project" },
+              { v: "100%",  l: "Satisfaction" },
             ].map((m) => (
               <div key={m.l}>
                 <div
@@ -123,12 +123,56 @@ const ContactSection: React.FC = () => (
             className="card"
             style={{ minWidth: "300px", maxWidth: "360px" }}
           >
+            {/* Availability signal — absorbed from eliminated PhilosophySection */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "flex-start",
+                gap: "10px",
+                padding: "12px 14px",
+                background: "var(--color-bg)",
+                border: "1px solid var(--color-border)",
+                borderRadius: "var(--radius-sm)",
+                marginBottom: "var(--sp-4)",
+              }}
+            >
+              <span
+                style={{
+                  width: "8px", height: "8px", borderRadius: "50%",
+                  background: "#22C55E",
+                  boxShadow: "0 0 0 3px rgba(34,197,94,0.18)",
+                  flexShrink: 0,
+                  marginTop: "4px",
+                }}
+                aria-hidden="true"
+              />
+              <div>
+                <div style={{ fontWeight: 600, fontSize: "13px", color: "var(--color-text-primary)", marginBottom: "2px" }}>
+                  Available for hire · 2026
+                </div>
+                <div style={{ fontSize: "12px", color: "var(--color-text-tertiary)", lineHeight: 1.5 }}>
+                  Open to front-end or back-end developer positions. Remote worldwide.
+                </div>
+              </div>
+            </div>
+
             <h3 className="text-h3 mb-5">Start a conversation</h3>
+
+            <p
+              style={{
+                fontSize: "13px",
+                color: "var(--color-text-tertiary)",
+                marginBottom: "16px",
+                lineHeight: 1.5,
+              }}
+            >
+              Typically responds within 24 hours · Based in Algeria · Open to remote
+            </p>
 
             <a
               href="mailto:abdelhamidramdani17@gmail.com"
               className="btn-primary w-full justify-center mb-3"
-              style={{ display: "flex" }}
+              style={{ display: "flex", minHeight: "54px", fontSize: "15px" }}
             >
               Send an Email
             </a>
@@ -162,7 +206,7 @@ const ContactSection: React.FC = () => (
           "@context": "https://schema.org",
           "@type": "Person",
           name: "Abdelhamid Ramdani",
-          jobTitle: "Technical Product Architect & CTO",
+          jobTitle: "Full-Stack Developer & AI Engineer",
           email: "abdelhamidramdani17@gmail.com",
           url: "https://abdelhamidramdani.vercel.app",
           sameAs: [
@@ -170,13 +214,13 @@ const ContactSection: React.FC = () => (
             "https://www.linkedin.com/in/abdelhamid-ramdani/",
           ],
           address: { "@type": "PostalAddress", addressLocality: "Djelfa", addressCountry: "Algeria" },
-          knowsAbout: ["System Architecture", "Full-Stack Engineering", "AI Integration", "Next.js", "Node.js"],
+          knowsAbout: ["Full-Stack Development", "AI Integration", "React", "Next.js", "Node.js", "Express.js"],
         }),
       }}
     />
 
     <span className="sr-only">
-      Contact Abdelhamid Ramdani — Technical Product Architect &amp; CTO. Email: abdelhamidramdani17@gmail.com
+      Contact Abdelhamid Ramdani — Full-Stack Developer &amp; AI Engineer. Email: abdelhamidramdani17@gmail.com
     </span>
   </section>
 );

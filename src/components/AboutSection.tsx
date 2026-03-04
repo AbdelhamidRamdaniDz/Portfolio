@@ -25,9 +25,19 @@ const AboutSection: React.FC = () => {
       id="about"
       ref={ref}
       className="section"
-      style={{ background: "var(--color-surface-2)" }}
+      style={{ background: "var(--color-surface-2)", position: "relative", overflow: "hidden" }}
       aria-labelledby="about-heading"
     >
+      {/* Subtle dot texture */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage: "radial-gradient(circle, #C8C8C4 0.8px, transparent 0.8px)",
+          backgroundSize: "24px 24px",
+          opacity: 0.3,
+        }}
+      />
       <div className="container">
         <div className="grid lg:grid-cols-[1fr_320px] gap-12 xl:gap-20 items-start">
 
@@ -41,7 +51,7 @@ const AboutSection: React.FC = () => {
               style={{ transitionDelay: "80ms" }}
             >
               Built on engineering.<br />
-              <span style={{ color: "var(--color-text-tertiary)" }}>Driven by architecture.</span>
+              <span style={{ color: "var(--color-text-tertiary)" }}>Driven by impact.</span>
             </h2>
 
             <div
@@ -50,15 +60,15 @@ const AboutSection: React.FC = () => {
             >
               <p className="text-body-lg">
                 I&apos;m <strong style={{ color: "var(--color-text-primary)", fontWeight: 600 }}>Abdelhamid Ramdani</strong> —
-                a Technical Product Architect and CTO at{" "}
-                <strong style={{ color: "var(--color-text-primary)", fontWeight: 600 }}>FreeFlow</strong>.
-                I specialize in designing and shipping production systems that serve real load —
-                from multi-tenant SaaS platforms to government-grade digital infrastructure.
+                a Full-Stack Developer and Co-Founder of{" "}
+                <strong style={{ color: "var(--color-text-primary)", fontWeight: 600 }}>FreeFlow</strong>,
+                an incubated startup. I hold a Master&apos;s degree in Artificial Intelligence and have
+                hands-on experience building production-grade web applications using React, Next.js,
+                Node.js, and Express.
               </p>
               <p className="text-body-lg">
-                My practice combines <strong style={{ color: "var(--color-text-primary)", fontWeight: 600 }}>system architecture</strong>,{" "}
-                full-stack engineering, and a research background in AI — giving me the depth
-                to choose the right tools for the right problems, and the discipline to ship without shortcuts.
+                I&apos;ve worked across <strong style={{ color: "var(--color-text-primary)", fontWeight: 600 }}>front-end and back-end roles</strong>,{" "}
+                led architecture decisions, and integrated AI-driven features into real products.
               </p>
             </div>
 
@@ -74,23 +84,23 @@ const AboutSection: React.FC = () => {
                 {[
                   {
                     label: "Current role",
-                    value: "CTO — FreeFlow Studio",
-                    sub: "Full technical leadership",
+                    value: "Co-Founder — FreeFlow",
+                    sub: "March 2025 – Present",
                   },
                   {
-                    label: "Research",
+                    label: "Previous role",
+                    value: "Front-End Developer — Nhanik",
+                    sub: "Remote · March–July 2024",
+                  },
+                  {
+                    label: "Education",
                     value: "AI Master's — Ziane Achour University",
                     sub: "Machine learning & intelligent systems",
                   },
                   {
-                    label: "Location",
-                    value: "Djelfa, Algeria",
-                    sub: "Available remotely worldwide",
-                  },
-                  {
-                    label: "Focus area",
-                    value: "System architecture, full-stack, AI integration",
-                    sub: "Next.js · Node.js · TypeScript · Python",
+                    label: "Available for",
+                    value: "Front-End or Back-End Developer roles",
+                    sub: "Djelfa, Algeria · Remote worldwide",
                   },
                 ].map((c) => (
                   <div key={c.label}>
@@ -105,6 +115,24 @@ const AboutSection: React.FC = () => {
                     </p>
                   </div>
                 ))}
+              </div>
+
+              {/* CTA row — Download CV + anchor to work */}
+              <div
+                className="animate-in flex flex-wrap gap-3 mt-8"
+                style={{ transitionDelay: "300ms" }}
+              >
+                <a
+                  href="/AbdelhamidRamdani-CV.pdf"
+                  download
+                  className="btn-ghost"
+                  aria-label="Download Abdelhamid Ramdani's CV as PDF"
+                >
+                  Download CV
+                </a>
+                <a href="#work" className="btn-ghost">
+                  View My Work
+                </a>
               </div>
             </div>
           </div>
@@ -158,12 +186,37 @@ const AboutSection: React.FC = () => {
                 <div className="flex items-center gap-2.5 mb-1">
                   <div className="w-2 h-2 rounded-full bg-green-500" />
                   <span className="text-xs font-semibold" style={{ color: "var(--color-text-primary)" }}>
-                    Taking projects · Q2 2026
+                    Available for hire · 2026
                   </span>
                 </div>
                 <p className="text-xs" style={{ color: "var(--color-text-tertiary)" }}>
-                  2–3 select engagements per quarter. Architecture, engineering, and advisory.
+                  Open to front-end or back-end developer roles. Remote worldwide.
                 </p>
+              </div>
+
+              {/* Social proof chips */}
+              <div className="mt-4 flex flex-wrap gap-2">
+                {[
+                  "\u2713 Master's in AI",
+                  "\u2713 Co-Founder",
+                  "\u2713 Available for hire",
+                ].map((chip) => (
+                  <span
+                    key={chip}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      padding: "6px 12px",
+                      borderRadius: "var(--radius-sm)",
+                      background: "var(--color-accent-muted)",
+                      color: "var(--color-accent)",
+                      fontSize: "12px",
+                      fontWeight: 600,
+                    }}
+                  >
+                    {chip}
+                  </span>
+                ))}
               </div>
             </div>
           </div>

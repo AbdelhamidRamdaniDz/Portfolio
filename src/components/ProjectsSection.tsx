@@ -18,6 +18,7 @@ interface CaseStudy {
   title: string;
   sector: string;
   stack: string[];
+  accentGradient: string;
   archDecision: {
     tag: string;
     headline: string;
@@ -34,10 +35,10 @@ interface CaseStudy {
 /* ─── METRIC COLORS ──────────────────────────────────────── */
 
 const metricColors = {
-  performance:  { bg: "#ECFDF5", text: "#065F46", dot: "#10B981" },
-  scalability:  { bg: "#EEF2FF", text: "#3730A3", dot: "#6366F1" },
-  reliability:  { bg: "#FFF7ED", text: "#92400E", dot: "#F59E0B" },
-  efficiency:   { bg: "#F0FDF4", text: "#14532D", dot: "#22C55E" },
+  performance:  { bg: "var(--color-accent-muted)", text: "var(--color-accent)",   dot: "var(--color-accent)" },
+  scalability:  { bg: "var(--color-accent-muted)", text: "var(--color-accent)",   dot: "var(--color-accent)" },
+  reliability:  { bg: "var(--color-border)",        text: "var(--color-text-tertiary)", dot: "var(--color-text-tertiary)" },
+  efficiency:   { bg: "var(--color-accent-muted)", text: "var(--color-accent)",   dot: "var(--color-accent)" },
 };
 
 /* ─── ABSTRACT SYSTEM DIAGRAMS ───────────────────────────── */
@@ -135,57 +136,13 @@ const LegalFlowDiagram = () => (
 
 const studies: CaseStudy[] = [
   {
-    id: "public-service",
-    icon: <Layers className="w-4 h-4" />,
-    systemDiagram: <GovFlowDiagram />,
-    title: "Government Digitization Platform",
-    sector: "Public Sector · Algeria",
-    stack: ["Next.js", "TypeScript", "Node.js", "PDF Gen"],
-    archDecision: {
-      tag: "State Machine vs. CRUD",
-      headline: "Stateful Workflow Engine",
-      rationale: "Strict regulatory stages demanded immutable state transitions — not free-form CRUD. Event-sourced audit log for dispute resolution.",
-    },
-    metrics: [
-      { value: "−83%", label: "Processing Time", type: "performance" },
-      { value: "12,450+", label: "Cases Digitized", type: "scalability" },
-      { value: "0", label: "Lost Applications", type: "reliability" },
-    ],
-    gravity: "12,450+ paper applications. 90+ day resolution cycles. No audit trail. Complete opacity across applicant / reviewer / admin roles.",
-    lift: "Stateful workflow engine with role-separated surfaces. Server-side PDF rendering. Automated email notifications at each stage transition. Full event log for every state change.",
-    orbit: "15-day average resolution. 70% reduction in manual staff hours. Zero lost cases since go-live. Adopted by government body as permanent infrastructure.",
-    href: "https://public-service-inspectorate.vercel.app/",
-  },
-  {
-    id: "freeflow",
-    icon: <LayoutDashboard className="w-4 h-4" />,
-    systemDiagram: <SaaSFlowDiagram />,
-    title: "Multi-Tenant SaaS Studio",
-    sector: "Creative Agency · B2B SaaS",
-    stack: ["Next.js", "MongoDB", "JWT", "Vercel"],
-    archDecision: {
-      tag: "Shared DB vs. Database-per-Tenant",
-      headline: "Middleware-Scoped JWT Isolation",
-      rationale: "Database-per-tenant offers the cleanest isolation but multiplies ops cost. Shared schema with compound index enforcement + middleware JWT scoping achieves isolation at <3ms overhead.",
-    },
-    metrics: [
-      { value: "<200ms", label: "P95 Latency", type: "performance" },
-      { value: "4 clients", label: "Onboarded in 30d", type: "scalability" },
-      { value: "100%", label: "Isolation Record", type: "reliability" },
-    ],
-    gravity: "One platform, multiple enterprise clients. Any data leakage across tenants is a contractual and legal liability. Standard CMSes have no query-layer tenant enforcement.",
-    lift: "Scoped JWT claims enforced at API middleware layer. MongoDB compound indexes (tenantId + resource). Single admin action to provision a new tenant — no infrastructure change.",
-    orbit: "Zero cross-tenant data incidents across 12+ months of production. 4 enterprise clients live in 30 days. Sub-200ms P95 across concurrent multi-tenant load.",
-    href: "https://free-flow-studios.vercel.app/",
-    githubUrl: "https://github.com/AbdelhamidRamdaniDz",
-  },
-  {
     id: "urgo",
     icon: <HeartPulse className="w-4 h-4" />,
     systemDiagram: <HealthFlowDiagram />,
-    title: "Emergency Health System",
-    sector: "Health-Tech · Cross-Platform",
-    stack: ["Next.js", "React Native", "Expo", "Node.js"],
+    title: "URGO — Emergency Response System",
+    sector: "Health-Tech · Web + Mobile",
+    stack: ["React Native", "Node.js", "MongoDB"],
+    accentGradient: "linear-gradient(135deg, #F43F5E 0%, #FB7185 50%, #FDA4AF 100%)",
     archDecision: {
       tag: "Monolith vs. Dual-Surface API",
       headline: "Single API, Two Surfaces",
@@ -197,31 +154,125 @@ const studies: CaseStudy[] = [
       { value: "2 platforms", label: "Mobile + Web", type: "scalability" },
     ],
     gravity: "Paramedics on mobile. Hospitals on desktop. Two disconnected systems. No shared state during transit. Critical patient data arrived after the patient.",
-    lift: "Single Node.js API with WebSocket broadcast. React Native app (paramedic) and Next.js dashboard (hospital) both subscribe to the same event stream. Interactive map routing for both.",
+    lift: "Web + Mobile platform for hospitals & paramedics. Interactive map navigation, real-time patient data transmission, bed availability tracking, analytics dashboard.",
     orbit: "Hospital receives patient intake data before ambulance arrival. Unified real-time coordination replaced fragmented phone-based handoffs across two platform surfaces.",
     href: "https://hospital-front-opal.vercel.app/",
   },
   {
-    id: "arbitration",
-    icon: <Scale className="w-4 h-4" />,
-    systemDiagram: <LegalFlowDiagram />,
-    title: "Digital Arbitration Center",
-    sector: "LegalTech · Algeria",
-    stack: ["Next.js", "TypeScript", "TailwindCSS"],
+    id: "freeflow",
+    icon: <LayoutDashboard className="w-4 h-4" />,
+    systemDiagram: <SaaSFlowDiagram />,
+    title: "FreeFlow — SaaS for Algerian SMEs",
+    sector: "Cross-Platform · Web, Desktop & Mobile",
+    stack: ["Next.js", "Express.js", "MongoDB", "Hugging Face"],
+    accentGradient: "linear-gradient(135deg, #0D7A6B 0%, #14B8A6 50%, #5EEAD4 100%)",
     archDecision: {
-      tag: "UX-First vs. Compliance-First",
-      headline: "Legal UX: Clarity Over Beauty",
-      rationale: "Legal tech users are not consumer app users. Every design decision subordinated to: unambiguous stage labeling, full document record, formal legalese UX language over marketing copy.",
+      tag: "Shared DB vs. Database-per-Tenant",
+      headline: "Middleware-Scoped JWT Isolation",
+      rationale: "Database-per-tenant offers the cleanest isolation but multiplies ops cost. Shared schema with compound index enforcement + middleware JWT scoping achieves isolation at <3ms overhead.",
     },
     metrics: [
-      { value: "#1", label: "Platform in Algeria", type: "reliability" },
-      { value: "100%", label: "Cases Documented", type: "efficiency" },
-      { value: "Remote", label: "Access Enabled", type: "scalability" },
+      { value: "<200ms", label: "P95 Latency", type: "performance" },
+      { value: "AI-driven", label: "Process Automation", type: "scalability" },
+      { value: "100%", label: "Isolation Record", type: "reliability" },
     ],
-    gravity: "No digital arbitration platform existed for Algeria's sports and commercial sectors. Cases managed by phone. No audit trail. Commercial clients demanded formal documentation.",
-    lift: "Document-first architecture: every case stage creates an immutable record. Formal typography and structured legal language chosen deliberately over consumer-app aesthetics. Jurisdictional scope defined at submission.",
-    orbit: "First dedicated digital arbitration platform in Algeria. Replaced ad-hoc phone processes with fully documented, remotely accessible case flows. Geographic barriers removed for commercial clients.",
-    href: "https://sports-arbitration-center.vercel.app/",
+    gravity: "Algerian SMEs need affordable, localized SaaS tools. No cross-platform solution existed with AI-driven automation and proper tenant isolation.",
+    lift: "Cross-platform SaaS (Web, Desktop & Mobile) with AI-driven process automation, UX/UI refinement, branding & content creation tools. Hugging Face API integration.",
+    orbit: "Incubated startup delivering AI-powered business tools to Algerian SMEs. Sub-200ms P95 latency across concurrent multi-tenant load.",
+    href: "https://free-flow-studios.vercel.app/",
+    githubUrl: "https://github.com/AbdelhamidRamdaniDz",
+  },
+  {
+    id: "public-service",
+    icon: <Layers className="w-4 h-4" />,
+    systemDiagram: <GovFlowDiagram />,
+    title: "Public Service Inspectorate",
+    sector: "Gov E-Service · Algeria",
+    stack: ["Next.js", "Node.js"],
+    accentGradient: "linear-gradient(135deg, #4338CA 0%, #6366F1 50%, #A5B4FC 100%)",
+    archDecision: {
+      tag: "State Machine vs. CRUD",
+      headline: "Stateful Workflow Engine",
+      rationale: "Strict regulatory stages demanded immutable state transitions — not free-form CRUD. Event-sourced audit log for dispute resolution.",
+    },
+    metrics: [
+      { value: "12,450+", label: "Requests Simulated", type: "scalability" },
+      { value: "15 days", label: "Processing Target", type: "performance" },
+      { value: "0", label: "Lost Applications", type: "reliability" },
+    ],
+    gravity: "Diploma equivalence requests handled entirely on paper. 90+ day resolution cycles. No audit trail. Complete opacity for applicants.",
+    lift: "Digitalized diploma equivalence requests with real-time tracking and admin analytics. Stateful workflow engine with role-separated surfaces. Server-side PDF rendering.",
+    orbit: "15-day average processing target. 12,450+ processed requests simulated. Zero lost cases. Adopted as permanent infrastructure prototype.",
+    href: "https://public-service-inspectorate.vercel.app/",
+  },
+  {
+    id: "minha",
+    icon: <Layers className="w-4 h-4" />,
+    systemDiagram: <GovFlowDiagram />,
+    title: "minha — Automation Bot",
+    sector: "Python Automation · Telegram",
+    stack: ["Python", "Telegram API"],
+    accentGradient: "linear-gradient(135deg, #2563EB 0%, #3B82F6 50%, #93C5FD 100%)",
+    archDecision: {
+      tag: "Manual vs. Automated",
+      headline: "Telegram-Controlled Automation",
+      rationale: "Users needed remote control over the booking process. Telegram bot interface provides instant notifications and control without building a custom mobile app.",
+    },
+    metrics: [
+      { value: "Auto", label: "Booking Process", type: "efficiency" },
+      { value: "Remote", label: "Telegram Control", type: "scalability" },
+      { value: "24/7", label: "Monitoring", type: "reliability" },
+    ],
+    gravity: "ANEM unemployment benefit appointments required manual checking and booking — a repetitive, time-sensitive process that users often missed.",
+    lift: "Python automation bot that handles ANEM appointment booking end-to-end with Telegram remote control for monitoring and triggering actions.",
+    orbit: "Fully automated appointment booking system accessible via Telegram. Eliminated manual checking and reduced missed appointment windows.",
+    href: "#",
+  },
+  {
+    id: "waslaauto",
+    icon: <LayoutDashboard className="w-4 h-4" />,
+    systemDiagram: <SaaSFlowDiagram />,
+    title: "waslaauto — Automotive E-Commerce",
+    sector: "E-Commerce · Cross-Border",
+    stack: ["Next.js", "Node.js", "MongoDB"],
+    accentGradient: "linear-gradient(135deg, #D97706 0%, #F59E0B 50%, #FCD34D 100%)",
+    archDecision: {
+      tag: "Marketplace vs. Direct Sales",
+      headline: "Cross-Border Inventory Bridge",
+      rationale: "Connecting Chinese vehicle market to Algerian consumers requires real-time inventory sync, currency handling, and localized product presentation.",
+    },
+    metrics: [
+      { value: "Full", label: "Inventory System", type: "efficiency" },
+      { value: "Cross-border", label: "Market Bridge", type: "scalability" },
+      { value: "Real-time", label: "Stock Sync", type: "performance" },
+    ],
+    gravity: "No direct platform existed for Algerian consumers to browse and purchase vehicles from the Chinese market. Fragmented communication and no centralized inventory.",
+    lift: "Automotive e-commerce platform connecting Chinese vehicle market to Algerian consumers with full inventory management system.",
+    orbit: "Centralized cross-border automotive marketplace with complete inventory management replacing fragmented import processes.",
+    href: "#",
+  },
+  {
+    id: "colorea",
+    icon: <Scale className="w-4 h-4" />,
+    systemDiagram: <LegalFlowDiagram />,
+    title: "colorea — Food Colorants E-Commerce",
+    sector: "E-Commerce · Health & Food",
+    stack: ["Next.js", "Node.js", "Stripe"],
+    accentGradient: "linear-gradient(135deg, #059669 0%, #34D399 50%, #A7F3D0 100%)",
+    archDecision: {
+      tag: "Traditional vs. Direct",
+      headline: "Direct-to-Consumer Platform",
+      rationale: "Cutting out middlemen for natural food colorants required building trust through transparent sourcing and integrated electronic payments.",
+    },
+    metrics: [
+      { value: "Direct", label: "Purchasing", type: "efficiency" },
+      { value: "E-Pay", label: "Electronic Payments", type: "scalability" },
+      { value: "Natural", label: "Herb-Based Products", type: "reliability" },
+    ],
+    gravity: "Natural herb-based food colorants were only available through traditional distribution channels with no online purchasing or electronic payment options.",
+    lift: "Direct purchasing platform with electronic payments for natural herb-based food colorants. Transparent product sourcing and order management.",
+    orbit: "Healthy food colorants now available for direct purchase online with integrated electronic payment processing.",
+    href: "#",
   },
 ];
 
@@ -241,11 +292,11 @@ function MetricPill({ m }: { m: Metric }) {
     >
       <p
         className="tabular-nums"
-        style={{ fontSize: "16px", fontWeight: 700, color: c.text, lineHeight: 1.1, letterSpacing: "-0.02em" }}
+        style={{ fontSize: "20px", fontWeight: 800, color: c.text, lineHeight: 1.1, letterSpacing: "-0.02em" }}
       >
         {m.value}
       </p>
-      <p style={{ fontSize: "10px", color: c.text, opacity: 0.7, fontWeight: 500, marginTop: "2px", letterSpacing: "0.02em" }}>
+      <p style={{ fontSize: "11px", color: c.text, opacity: 0.7, fontWeight: 500, marginTop: "3px", letterSpacing: "0.02em" }}>
         {m.label}
       </p>
     </div>
@@ -283,19 +334,29 @@ function CaseCard({ cs }: { cs: CaseStudy }) {
         (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
       }}
     >
+      {/* ── Gradient banner ──────────────────────────── */}
+      <div
+        style={{
+          height: "6px",
+          background: cs.accentGradient,
+          flexShrink: 0,
+        }}
+        aria-hidden="true"
+      />
+
       {/* ── Corner tag ─────────────────────────────────── */}
       <div
         style={{
           position: "absolute",
           top: "14px",
           right: "14px",
-          background: "#F8F8F6",
-          border: "1px solid #E4E4E0",
-          borderRadius: "20px",
+          background: "var(--color-bg)",
+          border: "1px solid var(--color-border)",
+          borderRadius: "var(--radius-sharp)",
           padding: "3px 9px",
           fontSize: "9px",
           fontWeight: 700,
-          color: "#909090",
+          color: "var(--color-text-tertiary)",
           letterSpacing: "0.06em",
           textTransform: "uppercase",
           zIndex: 2,
@@ -314,7 +375,7 @@ function CaseCard({ cs }: { cs: CaseStudy }) {
               width: "30px",
               height: "30px",
               borderRadius: "8px",
-              background: "var(--color-accent-light)",
+              background: "var(--color-accent-muted)",
               color: "var(--color-accent)",
               flexShrink: 0,
               display: "flex",
@@ -337,23 +398,10 @@ function CaseCard({ cs }: { cs: CaseStudy }) {
           {cs.sector}
         </p>
 
-        {/* Tech tags */}
+        {/* Tech tags — .tag-primary for stack items */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: "5px", marginBottom: "14px" }}>
           {cs.stack.map((t) => (
-            <span
-              key={t}
-              style={{
-                background: "#F2F2F0",
-                color: "#525252",
-                fontSize: "10px",
-                fontWeight: 600,
-                padding: "3px 8px",
-                borderRadius: "20px",
-                letterSpacing: "0.02em",
-              }}
-            >
-              {t}
-            </span>
+            <span key={t} className="tag-primary">{t}</span>
           ))}
         </div>
 
@@ -377,21 +425,21 @@ function CaseCard({ cs }: { cs: CaseStudy }) {
       <div
         style={{
           margin: "0 14px 14px",
-          background: "#EEF2FF",
-          border: "1px solid #C7D2FE",
-          borderRadius: "10px",
+          background: "var(--color-accent-muted)",
+          border: "1px solid var(--color-border)",
+          borderRadius: "var(--radius-sm)",
           padding: "12px 14px",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "6px" }}>
           <span
             style={{
-              background: "#1B4FD8",
+              background: "var(--color-accent)",
               color: "#fff",
               fontSize: "9px",
               fontWeight: 700,
               padding: "2px 7px",
-              borderRadius: "20px",
+              borderRadius: "var(--radius-sharp)",
               letterSpacing: "0.06em",
               textTransform: "uppercase",
               flexShrink: 0,
@@ -399,7 +447,7 @@ function CaseCard({ cs }: { cs: CaseStudy }) {
           >
             Architecture Decision
           </span>
-          <span style={{ fontSize: "10px", color: "#6366F1", fontWeight: 600 }}>{cs.archDecision.tag}</span>
+          <span style={{ fontSize: "10px", color: "var(--color-accent)", fontWeight: 600 }}>{cs.archDecision.tag}</span>
         </div>
         <p style={{ fontSize: "13px", fontWeight: 700, color: "#1A1A1A", marginBottom: "4px", letterSpacing: "-0.01em" }}>
           {cs.archDecision.headline}
@@ -485,9 +533,9 @@ function CaseCard({ cs }: { cs: CaseStudy }) {
             style={{ marginTop: "10px" }}
           >
             {[
-              { key: "Gravity",  value: cs.gravity,  color: "#BE185D" },
-              { key: "Lift",     value: cs.lift,      color: "#1B4FD8" },
-              { key: "Orbit",    value: cs.orbit,     color: "#065F46" },
+              { key: "Gravity",  value: cs.gravity,  color: "var(--color-accent)" },
+              { key: "Lift",     value: cs.lift,      color: "var(--color-text-primary)" },
+              { key: "Orbit",    value: cs.orbit,     color: "var(--color-text-secondary)" },
             ].map(({ key, value, color }) => (
               <div key={key} style={{ display: "flex", gap: "8px", marginBottom: "8px" }}>
                 <span
@@ -527,26 +575,27 @@ function CaseCard({ cs }: { cs: CaseStudy }) {
           rel="noopener noreferrer"
           aria-label={`View live case study for ${cs.title}`}
           style={{
-            fontSize: "12px",
-            fontWeight: 600,
-            color: "var(--color-accent)",
+            fontSize: "13px",
+            fontWeight: 700,
+            color: "#FFFFFF",
+            background: "var(--color-accent)",
             border: "1.5px solid var(--color-accent)",
-            borderRadius: "6px",
-            padding: "6px 12px",
+            borderRadius: "var(--radius-sharp)",
+            padding: "8px 16px",
             textDecoration: "none",
             display: "inline-flex",
             alignItems: "center",
             gap: "5px",
-            transition: "background 0.15s, color 0.15s",
+            transition: "background 0.15s, transform 0.15s",
             flexShrink: 0,
           }}
           onMouseEnter={(e) => {
-            (e.currentTarget as HTMLAnchorElement).style.background = "var(--color-accent)";
-            (e.currentTarget as HTMLAnchorElement).style.color = "#fff";
+            (e.currentTarget as HTMLAnchorElement).style.background = "var(--color-accent-hover)";
+            (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-1px)";
           }}
           onMouseLeave={(e) => {
-            (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
-            (e.currentTarget as HTMLAnchorElement).style.color = "var(--color-accent)";
+            (e.currentTarget as HTMLAnchorElement).style.background = "var(--color-accent)";
+            (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
           }}
         >
           View Case Study
@@ -562,9 +611,9 @@ function CaseCard({ cs }: { cs: CaseStudy }) {
             style={{
               fontSize: "12px",
               fontWeight: 600,
-              color: "#525252",
-              border: "1.5px solid #E4E4E0",
-              borderRadius: "6px",
+              color: "var(--color-text-secondary)",
+              border: "1.5px solid var(--color-border)",
+              borderRadius: "var(--radius-sharp)",
               padding: "6px 12px",
               textDecoration: "none",
               display: "inline-flex",
@@ -632,7 +681,7 @@ const ProjectsSection: React.FC = () => (
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 500px), 1fr))",
-          gap: "28px",
+          gap: "24px",
         }}
         role="list"
       >
@@ -649,28 +698,8 @@ const ProjectsSection: React.FC = () => (
           href="https://github.com/AbdelhamidRamdaniDz"
           target="_blank"
           rel="noopener noreferrer"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "8px",
-            fontSize: "13px",
-            fontWeight: 600,
-            color: "var(--color-text-secondary)",
-            border: "1px solid var(--color-border)",
-            borderRadius: "8px",
-            padding: "10px 20px",
-            textDecoration: "none",
-            background: "var(--color-surface)",
-            transition: "border-color 0.15s, color 0.15s",
-          }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--color-accent)";
-            (e.currentTarget as HTMLAnchorElement).style.color = "var(--color-accent)";
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--color-border)";
-            (e.currentTarget as HTMLAnchorElement).style.color = "var(--color-text-secondary)";
-          }}
+          className="btn-ghost text-link"
+          style={{ gap: "8px" }}
         >
           View All Projects
           <ArrowRight className="w-4 h-4" aria-hidden="true" />

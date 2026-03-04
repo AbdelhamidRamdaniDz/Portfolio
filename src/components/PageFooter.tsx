@@ -56,7 +56,7 @@ const PageFooter: React.FC = () => {
               Abdelhamid Ramdani
             </p>
             <p className="text-sm mb-3" style={{ color: "var(--color-text-tertiary)" }}>
-              Technical Product Architect &amp; CTO
+              Full-Stack Developer &amp; AI Engineer
             </p>
             <a
               href="mailto:abdelhamidramdani17@gmail.com"

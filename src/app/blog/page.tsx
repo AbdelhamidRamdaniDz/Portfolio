@@ -13,51 +13,57 @@ function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 }
 
-const categoryColors: Record<string, string> = {
-  AI:              "var(--color-accent)",
-  "System Design": "#059669",
-  Architecture:    "#7c3aed",
-  "Big Data":      "#b45309",
-  Research:        "#be185d",
-};
 
 function PostCard({ post }: { post: BlogPost }) {
-  const accentColor = categoryColors[post.category] ?? "var(--color-accent)";
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="block card card-hover h-full"
+      className="block card card-interactive h-full"
       aria-label={`Read: ${post.title}`}
-      style={{ textDecoration: "none" }}
     >
       {/* Category tag */}
-      <div className="flex items-center gap-3 mb-4">
-        <span
-          className="text-caption px-2.5 py-1 rounded-md font-semibold"
-          style={{ background: `${accentColor}15`, color: accentColor }}
-        >
-          {post.category}
-        </span>
+      <div className="mb-4">
+        <span className="tag-primary">{post.category}</span>
       </div>
 
       {/* Title */}
       <h2
-        className="text-h3 mb-3 leading-snug"
-        style={{ fontSize: "18px", fontWeight: 700 }}
+        className="text-h3 mb-2"
+        style={{
+          fontSize: "18px",
+          fontWeight: 700,
+          display: "-webkit-box",
+          WebkitLineClamp: 2,
+          WebkitBoxOrient: "vertical",
+          overflow: "hidden",
+        }}
       >
         {post.title}
       </h2>
 
       {/* Abstract */}
       <p
-        className="text-body mb-5 line-clamp-2 flex-1"
-        style={{ display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}
+        className="text-body-sm flex-1"
+        style={{
+          display: "-webkit-box",
+          WebkitLineClamp: 3,
+          WebkitBoxOrient: "vertical",
+          overflow: "hidden",
+          marginTop: "8px",
+        }}
       >
         {post.abstract}
       </p>
 
       {/* Meta footer */}
-      <div className="flex items-center justify-between mt-auto pt-4" style={{ borderTop: "1px solid var(--color-border)" }}>
+      <div
+        className="flex items-center justify-between mt-auto"
+        style={{
+          marginTop: "16px",
+          paddingTop: "16px",
+          borderTop: "1px solid var(--color-border)",
+        }}
+      >
         <div className="flex items-center gap-1.5">
           <Clock className="w-3.5 h-3.5" style={{ color: "var(--color-text-tertiary)" }} aria-hidden="true" />
           <span className="text-caption">{post.readingTime} min read</span>
@@ -108,7 +114,7 @@ export default function BlogPage() {
           </p>
 
           {/* Search */}
-          <div className="relative max-w-sm">
+          <div className="relative">
             <Search
               className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4"
               style={{ color: "var(--color-text-tertiary)" }}
@@ -120,15 +126,7 @@ export default function BlogPage() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               aria-label="Search articles"
-              className="w-full pl-9 pr-4 py-2.5 rounded-lg text-sm"
-              style={{
-                background: "var(--color-bg)",
-                border: "1px solid var(--color-border)",
-                color: "var(--color-text-primary)",
-                outline: "none",
-              }}
-              onFocus={(e) => (e.currentTarget.style.borderColor = "var(--color-accent)")}
-              onBlur={(e) => (e.currentTarget.style.borderColor = "var(--color-border)")}
+              className="search-input"
             />
           </div>
         </div>
@@ -136,18 +134,13 @@ export default function BlogPage() {
 
       <div className="container" style={{ paddingTop: "var(--sp-8)", paddingBottom: "var(--sp-12)" }}>
         {/* Category filter */}
-        <div className="flex flex-wrap gap-2 mb-10" role="group" aria-label="Filter by category">
+        <div className="flex flex-wrap gap-2" style={{ marginBottom: "var(--sp-8)" }} role="group" aria-label="Filter by category">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setFilter(cat)}
               aria-pressed={filter === cat}
-              className="text-sm font-medium px-4 py-2 rounded-lg border transition-all duration-150"
-              style={{
-                background: filter === cat ? "var(--color-accent)" : "var(--color-surface)",
-                color: filter === cat ? "#fff" : "var(--color-text-secondary)",
-                borderColor: filter === cat ? "var(--color-accent)" : "var(--color-border)",
-              }}
+              className={`filter-tab${filter === cat ? " filter-tab--active" : ""}`}
             >
               {cat}
             </button>

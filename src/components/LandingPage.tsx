@@ -5,7 +5,6 @@ import AboutSection from "./AboutSection";
 import SkillsSection from "./SkillsSection";
 import ProjectsSection from "./ProjectsSection";
 import ServicesSection from "./ServicesSection";
-import PhilosophySection from "./PhilosophySection";
 import ContactSection from "./ContactSection";
 import Footer from "./Footer";
 
@@ -27,13 +26,12 @@ const LandingPage: React.FC = () => {
   }, []);
 
   return (
-    <div style={{ fontFamily: "var(--font-sans)" }}>
+    <div>
       <HeroSection />
       <AboutSection />
       <SkillsSection />
       <ProjectsSection />
       <ServicesSection />
-      <PhilosophySection />
       <ContactSection />
       <Footer />
     </div>

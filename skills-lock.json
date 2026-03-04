@@ -1,6 +1,16 @@
 {
   "version": 1,
   "skills": {
+    "portfolio-analyzer": {
+      "source": "onewave-ai/claude-skills",
+      "sourceType": "github",
+      "computedHash": "d317c3ef012e4d53f345a231c0a36d2602803a8891b01a8fb51e55157190d1a2"
+    },
+    "programmatic-seo": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "computedHash": "b675dbe0f0d25efbfa788f7b6e01a231d8f7333cacd19c1cf678cdbe7ea1514a"
+    },
     "ui-ux-pro-max": {
       "source": "nextlevelbuilder/ui-ux-pro-max-skill",
       "sourceType": "github",

@@ -8,7 +8,7 @@ import PageFooter from "@/components/PageFooter";
 const statusConfig = {
   published:    { label: "Published",    bg: "#dcfce7", color: "#166534" },
   submitted:    { label: "Under Review", bg: "#fef9c3", color: "#854d0e" },
-  "in-progress":{ label: "In Progress",  bg: "var(--color-accent-light)", color: "var(--color-accent)" },
+  "in-progress":{ label: "In Progress",  bg: "var(--color-accent-muted)", color: "var(--color-accent)" },
 };
 
 function ResearchCard({ entry }: { entry: ResearchEntry }) {
@@ -25,7 +25,7 @@ function ResearchCard({ entry }: { entry: ResearchEntry }) {
         {/* Domain tag */}
         <span
           className="text-caption px-2.5 py-1 rounded-md font-semibold"
-          style={{ background: "var(--color-accent-light)", color: "var(--color-accent)" }}
+          style={{ background: "var(--color-accent-muted)", color: "var(--color-accent)" }}
         >
           {entry.domain}
         </span>

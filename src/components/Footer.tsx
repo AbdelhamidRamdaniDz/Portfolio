@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { Github, Linkedin } from "lucide-react";
 
 const Footer: React.FC = () => {
   const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
@@ -17,7 +18,7 @@ const Footer: React.FC = () => {
       <div className="container">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           {/* Brand */}
-          <div>
+          <div className="flex items-center gap-3">
             <span
               className="font-black text-base"
               style={{ color: "var(--color-text-primary)", letterSpacing: "-0.03em" }}
@@ -25,17 +26,68 @@ const Footer: React.FC = () => {
               AR.
             </span>
             <span
-              className="text-sm ml-2"
+              className="text-sm"
               style={{ color: "var(--color-text-tertiary)" }}
             >
-              Abdelhamid Ramdani · Technical Product Architect
+              Abdelhamid Ramdani &middot; Full-Stack Developer &amp; AI Engineer
             </span>
           </div>
 
-          {/* Copyright */}
-          <p className="text-sm" style={{ color: "var(--color-text-tertiary)" }}>
-            &copy; {new Date().getFullYear()} · Built with Next.js &amp; TypeScript
-          </p>
+          {/* Center: Social links + Copyright */}
+          <div className="flex items-center gap-4">
+            <a
+              href="https://www.linkedin.com/in/abdelhamid-ramdani/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn profile"
+              className="w-8 h-8 flex items-center justify-center rounded-md transition-all duration-150"
+              style={{
+                border: "1px solid var(--color-border)",
+                background: "var(--color-surface)",
+                color: "var(--color-text-tertiary)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "var(--color-accent)";
+                e.currentTarget.style.color = "#fff";
+                e.currentTarget.style.borderColor = "var(--color-accent)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "var(--color-surface)";
+                e.currentTarget.style.color = "var(--color-text-tertiary)";
+                e.currentTarget.style.borderColor = "var(--color-border)";
+              }}
+            >
+              <Linkedin className="w-4 h-4" />
+            </a>
+            <a
+              href="https://github.com/AbdelhamidRamdaniDz"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub profile"
+              className="w-8 h-8 flex items-center justify-center rounded-md transition-all duration-150"
+              style={{
+                border: "1px solid var(--color-border)",
+                background: "var(--color-surface)",
+                color: "var(--color-text-tertiary)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "var(--color-text-primary)";
+                e.currentTarget.style.color = "#fff";
+                e.currentTarget.style.borderColor = "var(--color-text-primary)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "var(--color-surface)";
+                e.currentTarget.style.color = "var(--color-text-tertiary)";
+                e.currentTarget.style.borderColor = "var(--color-border)";
+              }}
+            >
+              <Github className="w-4 h-4" />
+            </a>
+
+            <span className="text-sm" style={{ color: "var(--color-text-tertiary)" }}>
+              &copy; {new Date().getFullYear()} Abdelhamid Ramdani
+            </span>
+          </div>
 
           {/* Scroll top */}
           <button

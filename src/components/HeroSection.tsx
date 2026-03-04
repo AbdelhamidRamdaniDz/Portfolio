@@ -6,9 +6,9 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 
 const metrics = [
-  { value: "12,000+", label: "Daily system requests managed across production" },
+  { value: "1,000+", label: "Users served across production platforms" },
   { value: "15 days",  label: "Govt. processing time reduced from 3+ months" },
-  { value: "5",        label: "Countries with deployed production systems" },
+  { value: "8+",       label: "Projects shipped to production" },
 ];
 
 const HeroSection: React.FC = () => {
@@ -53,12 +53,12 @@ const HeroSection: React.FC = () => {
               <span
                 className="px-3 py-1.5 text-xs font-semibold rounded-md"
                 style={{
-                  background: "var(--color-accent-light)",
+                  background: "var(--color-accent-muted)",
                   color: "var(--color-accent)",
                   letterSpacing: "0.04em",
                 }}
               >
-                Technical Product Architect &amp; CTO
+                Full-Stack Developer &amp; AI Engineer
               </span>
             </div>
 
@@ -67,9 +67,9 @@ const HeroSection: React.FC = () => {
               className={`text-display mb-6 ${fade(0)}`}
               style={{ transitionDelay: "140ms" }}
             >
-              <span className="sr-only">Abdelhamid Ramdani — Technical Product Architect. I architect systems that scale businesses.</span>
+              <span className="sr-only">Abdelhamid Ramdani — Full-Stack Developer & AI Engineer. I build systems that scale businesses.</span>
               <span aria-hidden="true">
-                I architect<br />
+                I build<br />
                 <span style={{ color: "var(--color-text-tertiary)" }}>systems that<br />scale businesses.</span>
               </span>
             </h1>
@@ -79,8 +79,8 @@ const HeroSection: React.FC = () => {
               className={`text-body-lg mb-10 max-w-lg ${fade(0)}`}
               style={{ transitionDelay: "220ms" }}
             >
-              I lead engineering from system design through to production — for startups and
-              enterprises that need architecture that holds under real load.
+              Full Stack Developer &amp; AI Engineer — building secure, scalable web applications
+              for startups and tech-driven businesses.
             </p>
 
             {/* CTAs */}
@@ -97,26 +97,42 @@ const HeroSection: React.FC = () => {
               </Link>
             </div>
 
-            {/* Metrics */}
+            {/* Metrics — stats-container treatment per spec */}
             <div
-              className={`grid grid-cols-3 gap-0 ${fade(0)}`}
-              style={{ transitionDelay: "380ms" }}
+              className={`stats-container ${fade(0)}`}
+              style={{
+                transitionDelay: "380ms",
+                display: "grid",
+                gridTemplateColumns: "repeat(3, 1fr)",
+                gap: 0,
+              }}
             >
+              <p
+                style={{
+                  gridColumn: "1 / -1",
+                  fontSize: "11px",
+                  fontWeight: 600,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  color: "var(--color-accent)",
+                  marginBottom: "12px",
+                }}
+              >
+                Impact so far
+              </p>
               {metrics.map((m, i) => (
                 <div
                   key={m.value}
-                  className="pr-6 mr-6"
                   style={{
-                    borderRight: i < metrics.length - 1 ? `1px solid var(--color-border)` : "none",
+                    padding: "0 24px 0 0",
+                    marginRight: i < metrics.length - 1 ? "24px" : 0,
+                    borderRight: i < metrics.length - 1 ? "1px solid var(--color-border)" : "none",
                   }}
                 >
-                  <div
-                    className="font-black leading-none mb-1.5"
-                    style={{ fontSize: "clamp(22px, 3vw, 30px)", color: "var(--color-text-primary)" }}
-                  >
+                  <div className="stats-number" style={{ fontSize: "clamp(22px, 3vw, 32px)" }}>
                     {m.value}
                   </div>
-                  <div className="text-caption leading-snug" style={{ maxWidth: "120px" }}>
+                  <div className="stats-label" style={{ maxWidth: "120px" }}>
                     {m.label}
                   </div>
                 </div>
@@ -141,10 +157,10 @@ const HeroSection: React.FC = () => {
               >
                 <Image
                   src="/me.jpg"
-                  alt="Abdelhamid Ramdani — Technical Product Architect and CTO"
+                  alt="Abdelhamid Ramdani — Full-Stack Developer and AI Engineer"
                   fill
                   priority
-                  sizes="440px"
+                  sizes="(max-width: 767px) 0px, (max-width: 1023px) 400px, 420px"
                   className="object-cover object-top"
                 />
                 {/* Bottom tint for badge legibility */}
@@ -191,7 +207,7 @@ const HeroSection: React.FC = () => {
               <div
                 aria-hidden="true"
                 className="absolute -bottom-3 -left-3 w-14 h-14 rounded-xl -z-10"
-                style={{ background: "var(--color-accent-light)", border: `1px solid var(--color-accent)`, opacity: 0.6 }}
+                style={{ background: "var(--color-accent-muted)", border: `1px solid var(--color-accent)`, opacity: 0.6 }}
               />
             </div>
           </div>

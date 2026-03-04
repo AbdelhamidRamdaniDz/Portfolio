@@ -18,9 +18,14 @@ const Navbar: React.FC = () => {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 32);
+    const onScroll = () => {
+      setIsScrolled(window.scrollY > 32);
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0);
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -36,6 +41,12 @@ const Navbar: React.FC = () => {
 
   return (
     <>
+      {/* Scroll progress bar */}
+      <div
+        className="scroll-progress"
+        style={{ width: `${scrollProgress}%` }}
+        aria-hidden="true"
+      />
       <nav
         role="navigation"
         aria-label="Main navigation"
@@ -70,24 +81,18 @@ const Navbar: React.FC = () => {
                   <Link
                     key={l.href}
                     href={l.href}
-                    className="relative px-3.5 py-2 text-sm font-medium rounded-md transition-colors duration-150"
+                    className={`text-link px-3.5 py-2 text-sm font-medium transition-colors duration-150${active ? " text-link--active" : ""}`}
                     style={{
                       color: active ? "var(--color-accent)" : "var(--color-text-secondary)",
-                      textDecoration: "none",
-                    }}
-                    onMouseEnter={(e) => {
-                      if (!active) e.currentTarget.style.color = "var(--color-text-primary)";
-                    }}
-                    onMouseLeave={(e) => {
-                      if (!active) e.currentTarget.style.color = "var(--color-text-secondary)";
+                      fontWeight: active ? 600 : 500,
                     }}
                     aria-current={active ? "page" : undefined}
                   >
                     {l.label}
-                    {/* Active underline */}
+                    {/* Active: static 2px bottom line */}
                     {active && (
                       <span
-                        className="absolute bottom-0 left-3.5 right-3.5 h-[2px] rounded-full"
+                        className="absolute bottom-0 left-3.5 right-3.5 h-[2px]"
                         style={{ background: "var(--color-accent)" }}
                         aria-hidden="true"
                       />
@@ -96,13 +101,12 @@ const Navbar: React.FC = () => {
                 );
               })}
 
-              <a
-                href="mailto:abdelhamidramdani17@gmail.com"
+              <Link
+                href="/#contact"
                 className="btn-primary ml-4"
-                style={{ padding: "9px 18px", fontSize: "13px" }}
               >
-                Book a Call
-              </a>
+                Book a Technical Call
+              </Link>
             </div>
 
             {/* Mobile toggle */}
@@ -159,7 +163,7 @@ const Navbar: React.FC = () => {
                   className="flex items-center justify-between px-4 py-3 text-sm font-medium rounded-lg transition-colors duration-150"
                   style={{
                     color: active ? "var(--color-accent)" : "var(--color-text-secondary)",
-                    background: active ? "var(--color-accent-light)" : "transparent",
+                    background: active ? "var(--color-accent-muted)" : "transparent",
                     textDecoration: "none",
                   }}
                   aria-current={active ? "page" : undefined}
@@ -180,14 +184,14 @@ const Navbar: React.FC = () => {
             className="p-4 pt-0 border-t"
             style={{ borderColor: "var(--color-border)" }}
           >
-            <a
-              href="mailto:abdelhamidramdani17@gmail.com"
+            <Link
+              href="/#contact"
               onClick={() => setMobileOpen(false)}
               className="btn-primary"
               style={{ display: "flex", justifyContent: "center", width: "100%" }}
             >
               Book a Technical Call
-            </a>
+            </Link>
           </div>
         </div>
       </div>

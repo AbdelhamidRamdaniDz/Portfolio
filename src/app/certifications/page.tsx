@@ -8,87 +8,76 @@ import PageFooter from "@/components/PageFooter";
 const domainFilters = ["All", "Frontend", "Backend", "AI & ML", "Full-Stack", "Data Science", "DevOps"] as const;
 
 function CertCard({ cert }: { cert: Certification }) {
-  // Initials from organization
-  const initials = cert.organization
-    .split(/\s+/)
-    .map((w) => w[0])
-    .join("")
-    .slice(0, 3)
-    .toUpperCase();
-
   return (
     <div
-      className="card"
+      className="card card-interactive"
       style={{ display: "flex", flexDirection: "column", height: "100%" }}
     >
-      {/* Header row */}
-      <div className="flex items-start gap-4 mb-5">
-        {/* Org badge */}
-        <div
-          className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 font-black text-sm text-white"
-          style={{ background: cert.color, letterSpacing: "-0.02em" }}
-          aria-hidden="true"
-        >
-          {initials}
-        </div>
-
+      {/* Header row — title left, badge right (avatar removed) */}
+      <div className="flex items-start justify-between gap-4 mb-4">
         <div className="flex-1 min-w-0">
           <h3
-            className="font-bold leading-snug mb-0.5"
-            style={{ fontSize: "15px", color: "var(--color-text-primary)" }}
+            className="text-h4"
+            style={{ fontSize: "15px", fontWeight: 700 }}
           >
             {cert.title}
           </h3>
-          <p className="text-caption">
+          <p className="text-caption" style={{ marginTop: "4px" }}>
             {cert.organization} · {cert.year}
           </p>
         </div>
 
-        {/* Domain tag */}
-        <span
-          className="text-caption px-2.5 py-1 rounded-md flex-shrink-0"
-          style={{
-            background: "var(--color-accent-light)",
-            color: "var(--color-accent)",
-            fontWeight: 600,
-          }}
-        >
+        {/* Domain tag — single color system */}
+        <span className="tag-primary" style={{ flexShrink: 0 }}>
           {cert.domain}
         </span>
       </div>
 
+      {/* Divider */}
+      <div style={{ height: "1px", background: "var(--color-border)", margin: "0 0 16px" }} />
 
       {/* Skills */}
-      <div className="mb-5 flex-1">
-        <p className="text-caption mb-2.5" style={{ color: "var(--color-text-tertiary)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
+      <div className="mb-4 flex-1">
+        <p
+          className="text-caption"
+          style={{
+            color: "var(--color-text-tertiary)",
+            textTransform: "uppercase",
+            letterSpacing: "0.1em",
+            fontWeight: 500,
+            marginBottom: "12px",
+          }}
+        >
           Skills covered
         </p>
-        <ul className="space-y-1.5">
-          {cert.skills.map((s) => (
+        <ul style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+          {cert.skills.slice(0, 4).map((s) => (
             <li key={s} className="flex items-start gap-2">
               <CheckCircle
-                className="w-3.5 h-3.5 flex-shrink-0 mt-0.5"
-                style={{ color: "var(--color-accent)" }}
+                className="w-3.5 h-3.5 flex-shrink-0"
+                style={{ color: "var(--color-accent)", marginTop: "2px" }}
                 aria-hidden="true"
               />
-              <span className="text-sm" style={{ color: "var(--color-text-secondary)" }}>{s}</span>
+              <span className="text-body-sm">{s}</span>
             </li>
           ))}
         </ul>
       </div>
 
       {/* Verify link */}
-      <a
-        href={cert.verifyUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 text-sm font-semibold mt-auto transition-colors duration-150"
-        style={{ color: "var(--color-accent)", textDecoration: "none" }}
-        aria-label={`Verify ${cert.title} certification`}
-      >
-        Verify Certificate
-        <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
-      </a>
+      <div style={{ borderTop: "1px solid var(--color-border)", paddingTop: "16px", marginTop: "auto" }}>
+        <a
+          href={cert.verifyUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 text-body-sm font-medium transition-colors duration-150"
+          style={{ color: "var(--color-accent)", textDecoration: "none", fontWeight: 500 }}
+          aria-label={`Verify ${cert.title} certification`}
+        >
+          Verify Certificate
+          <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
+        </a>
+      </div>
     </div>
   );
 }
@@ -125,18 +114,13 @@ export default function CertificationsPage() {
 
       <div className="container" style={{ paddingTop: "var(--sp-8)", paddingBottom: "var(--sp-12)" }}>
         {/* Domain filter */}
-        <div className="flex flex-wrap gap-2 mb-10" role="group" aria-label="Filter by domain">
+        <div className="flex flex-wrap gap-2" style={{ marginBottom: "var(--sp-8)" }} role="group" aria-label="Filter by domain">
           {domainFilters.map((d) => (
             <button
               key={d}
               onClick={() => setDomain(d)}
               aria-pressed={domain === d}
-              className="text-sm font-medium px-4 py-2 rounded-lg border transition-all duration-150"
-              style={{
-                background: domain === d ? "var(--color-accent)" : "var(--color-surface)",
-                color: domain === d ? "#fff" : "var(--color-text-secondary)",
-                borderColor: domain === d ? "var(--color-accent)" : "var(--color-border)",
-              }}
+              className={`filter-tab${domain === d ? " filter-tab--active" : ""}`}
             >
               {d}
             </button>
@@ -153,7 +137,7 @@ export default function CertificationsPage() {
       </div>
 
       <div className="sr-only">
-        <h1>Professional Certifications — Abdelhamid Ramdani, Technical Product Architect</h1>
+        <h1>Professional Certifications — Abdelhamid Ramdani, Full-Stack Developer & AI Engineer</h1>
       </div>
       <PageFooter />
     </main>
